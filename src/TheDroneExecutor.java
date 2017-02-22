@@ -3,6 +3,7 @@ import de.yadrone.base.IARDrone;
 import de.yadrone.base.command.CommandManager;
 import de.yadrone.base.command.LEDAnimation;
 import de.yadrone.base.navdata.BatteryListener;
+import newpackage.VideoListener;
 
 public class TheDroneExecutor {
 
@@ -28,6 +29,8 @@ public class TheDroneExecutor {
 		{
 			if (drone != null)
 			{
+                                VideoListener listener = new VideoListener(drone);
+                                
 				CommandManager cmd = drone.getCommandManager();
 				int speed = 5; // percentage of max speed
 							
@@ -45,6 +48,8 @@ public class TheDroneExecutor {
 
 				cmd.backward(speed).doFor(2000);
 				cmd.hover().doFor(10000);
+                                
+                                
 
 				cmd.landing();
 			}
